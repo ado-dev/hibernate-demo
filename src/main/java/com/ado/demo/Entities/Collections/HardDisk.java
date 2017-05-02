@@ -18,6 +18,7 @@ public class HardDisk {
     @Id
     @GeneratedValue
     private long id;
+    private String manufacturer;
 
     // Eager fetch loads all the variables
     // Lazy fetch type loads only the first level of variables
@@ -27,5 +28,13 @@ public class HardDisk {
 
     public Set<String> getInstalledOss() {
         return installedOss;
+    }
+
+    public String getManufacturer() {
+        return manufacturer;
+    }
+
+    public void setManufacturer(String manufacturer) {
+        this.manufacturer = manufacturer;
     }
 }

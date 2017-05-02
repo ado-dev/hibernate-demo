@@ -139,6 +139,7 @@ public class App {
         // ---------------------------------------------------
 
         HardDisk ssd = new HardDisk();
+        ssd.setManufacturer("Toshiba");
         ssd.getInstalledOss().add("Windows 10");
         ssd.getInstalledOss().add("SomeLinuxDistro");
         ssd.getInstalledOss().add("BSD");
