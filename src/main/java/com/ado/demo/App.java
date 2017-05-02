@@ -140,6 +140,8 @@ public class App {
 
         HardDisk ssd = new HardDisk();
         ssd.setManufacturer("Toshiba");
+        ssd.setType("Solid State Drive"); // this will not be persisted beacuse it's Transient
+        ssd.setRpm("Not applicable"); // also ignored because it's static
         ssd.getInstalledOss().add("Windows 10");
         ssd.getInstalledOss().add("SomeLinuxDistro");
         ssd.getInstalledOss().add("BSD");

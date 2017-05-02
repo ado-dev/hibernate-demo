@@ -20,6 +20,11 @@ public class HardDisk {
     private long id;
     private String manufacturer;
 
+    // Transient or static values will be ingored by Hibernate
+    @Transient
+    private String type; // ignored
+    static private String rpm; // ignored
+
     // Eager fetch loads all the variables
     // Lazy fetch type loads only the first level of variables
     @ElementCollection (fetch = FetchType.EAGER)
@@ -36,5 +41,21 @@ public class HardDisk {
 
     public void setManufacturer(String manufacturer) {
         this.manufacturer = manufacturer;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public static String getRpm() {
+        return rpm;
+    }
+
+    public static void setRpm(String rpm) {
+        HardDisk.rpm = rpm;
     }
 }
