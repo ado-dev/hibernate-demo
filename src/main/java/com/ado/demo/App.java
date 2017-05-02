@@ -213,6 +213,9 @@ public class App {
                         + "Description:\t" + ssdData.getDescription() + "\n"
         );
 
+        // DELETE
+        entityManager2.remove(ssdData);
+
 
         entityManager2.getTransaction().commit();
         entityManager2.close();
