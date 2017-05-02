@@ -214,8 +214,8 @@ public class App {
         );
 
         // DELETE
-        entityManager2.remove(ssdData);
-
+        Bike bike = entityManager2.find(Bike.class, Long.valueOf(2));
+        entityManager2.remove(bike);
 
         entityManager2.getTransaction().commit();
         entityManager2.close();
