@@ -27,6 +27,7 @@ public class App {
 
     public static void main( String[] args ) {
         EntityManager entityManager = JPAUtil.getEntityManagerFactory().createEntityManager();
+        EntityManager entityManager2 = JPAUtil.getEntityManagerFactory().createEntityManager();
         entityManager.getTransaction().begin();
 
 
@@ -144,10 +145,10 @@ public class App {
         ssd.setDateOfProduction(new Date());
         ssd.setDescription(
                 "Lorem ipsum dolor sit amet, consectetur adipiscing elit." +
-                "Pellentesque quis efficitur dui, consequat porttitor metus. + " +
+                "Pellentesque quis efficitur dui, consequat porttitor metus. " +
                 "Praesent viverra euismod consectetur. Nullam faucibus rutrum"  +
                 "ipsum vitae consectetur. In hac habitasse platea dictumst. " +
-                "Phasellus eu lacinia erat. Vivamus fringilla nisi vitae fermentum " + "" +
+                "Phasellus eu lacinia erat. Vivamus fringilla nisi vitae fermentum " +
                 "lacinia. Aenean placerat odio quis eros malesuada, eu fringilla dui " +
                 "consequat. Nullam viverra ornare dolor, id egestas purus venenatis id."
 
@@ -158,8 +159,13 @@ public class App {
         ssd.getInstalledOss().add("SomeLinuxDistro");
         ssd.getInstalledOss().add("BSD");
 
+        // This demonstrates Create of CRUD operations
         entityManager.persist(ssd);
         // ----------------------------------------------------
+
+
+
+
 
 
         entityManager.getTransaction().commit();
@@ -170,7 +176,26 @@ public class App {
         // persisted in the future transaction
         // porsche.setName("CAYENNE"); // won't reflect in the DB
 
+        entityManager2.getTransaction().begin();
+
+        // CRUD OPERATIONS ------------------------------------
+        // ----------------------------------------------------
+        // CREATE (persist) data is already demonstrated above
+
+        // READ
+        HardDisk ssdData = entityManager2.find(HardDisk.class, Long.valueOf(17)); // id's value type is long
+
+        System.out.println(
+                "SSD DATA \n"
+                + "Manufacturer:\t" + ssdData.getManufacturer() + "\n"
+                + "Installed OSs:\t" + ssdData.getInstalledOss() + "\n"
+                + "Type:\t" + ssdData.getType() + "\n" // this is null because of @Transient
+                + "Production date:\t" + ssdData.getDateOfProduction() + "\n"
+                + "Description:\t" + ssdData.getDescription() + "\n"
+        );
 
 
+        entityManager2.getTransaction().commit();
+        entityManager2.close();
     }
 }
