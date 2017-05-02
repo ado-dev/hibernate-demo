@@ -26,6 +26,11 @@ public class HardDisk {
     @Temporal (TemporalType.DATE)
     private Date dateOfProduction;
 
+    // Lob is used where long strings or byte streams are to be stored in a column
+    // it automatically chooses between a Clob (long string) or Blob (byte stream)
+    @Lob
+    private String description;
+
     // Transient or static values will be ingored by Hibernate
     @Transient
     private String type; // ignored
@@ -51,6 +56,14 @@ public class HardDisk {
 
     public Date getDateOfProduction() {
         return dateOfProduction;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public void setDateOfProduction(Date dateOfProduction) {

@@ -142,6 +142,16 @@ public class App {
         HardDisk ssd = new HardDisk();
         ssd.setManufacturer("Toshiba");
         ssd.setDateOfProduction(new Date());
+        ssd.setDescription(
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit." +
+                "Pellentesque quis efficitur dui, consequat porttitor metus. + " +
+                "Praesent viverra euismod consectetur. Nullam faucibus rutrum"  +
+                "ipsum vitae consectetur. In hac habitasse platea dictumst. " +
+                "Phasellus eu lacinia erat. Vivamus fringilla nisi vitae fermentum " + "" +
+                "lacinia. Aenean placerat odio quis eros malesuada, eu fringilla dui " +
+                "consequat. Nullam viverra ornare dolor, id egestas purus venenatis id."
+
+        );
         ssd.setType("Solid State Drive"); // this will not be persisted beacuse it's Transient
         ssd.setRpm("Not applicable"); // also ignored because it's static
         ssd.getInstalledOss().add("Windows 10");
