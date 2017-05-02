@@ -1,6 +1,7 @@
 package com.ado.demo.Entities.Collections;
 
 import javax.persistence.*;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -19,6 +20,11 @@ public class HardDisk {
     @GeneratedValue
     private long id;
     private String manufacturer;
+
+    // @Temporal allows us to specify whether the Date object will contain only
+    // DATE or TIME, or if left out both date and timestamp will be shown in DB
+    @Temporal (TemporalType.DATE)
+    private Date dateOfProduction;
 
     // Transient or static values will be ingored by Hibernate
     @Transient
@@ -43,6 +49,14 @@ public class HardDisk {
         this.manufacturer = manufacturer;
     }
 
+    public Date getDateOfProduction() {
+        return dateOfProduction;
+    }
+
+    public void setDateOfProduction(Date dateOfProduction) {
+        this.dateOfProduction = dateOfProduction;
+    }
+
     public String getType() {
         return type;
     }
@@ -58,4 +72,6 @@ public class HardDisk {
     public static void setRpm(String rpm) {
         HardDisk.rpm = rpm;
     }
+
+
 }

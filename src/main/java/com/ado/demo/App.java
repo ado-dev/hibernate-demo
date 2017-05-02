@@ -17,6 +17,7 @@ import com.ado.demo.Entities.Inheritance.TablePerClass.SelfHelp;
 import com.ado.demo.Entities.EmbeddableTypes.Person;
 
 import javax.persistence.EntityManager;
+import java.util.Date;
 
 /**
  * Hello world!
@@ -140,6 +141,7 @@ public class App {
 
         HardDisk ssd = new HardDisk();
         ssd.setManufacturer("Toshiba");
+        ssd.setDateOfProduction(new Date());
         ssd.setType("Solid State Drive"); // this will not be persisted beacuse it's Transient
         ssd.setRpm("Not applicable"); // also ignored because it's static
         ssd.getInstalledOss().add("Windows 10");
