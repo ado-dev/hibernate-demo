@@ -161,6 +161,8 @@ public class App {
 
         // This demonstrates Create of CRUD operations
         entityManager.persist(ssd);
+
+
         // ----------------------------------------------------
 
 
@@ -188,10 +190,27 @@ public class App {
         System.out.println(
                 "SSD DATA \n"
                 + "Manufacturer:\t" + ssdData.getManufacturer() + "\n"
-                + "Installed OSs:\t" + ssdData.getInstalledOss() + "\n"
+                + "Installed OSs:\t" + ssdData.getInstalledOss() + "\n" // all values loaded because of EAGER fetch type
                 + "Type:\t" + ssdData.getType() + "\n" // this is null because of @Transient
                 + "Production date:\t" + ssdData.getDateOfProduction() + "\n"
                 + "Description:\t" + ssdData.getDescription() + "\n"
+        );
+
+        // UPDATE
+        // update is done simply by changing the current value and commiting the change
+        ssdData.getInstalledOss().add("Solaris");
+
+        // only the most current value will be the update one
+        ssdData.setManufacturer("Western Digital");
+        ssdData.setManufacturer("Toshiba"); // this one
+
+        System.out.println(
+                "SSD DATA \n"
+                        + "Manufacturer:\t" + ssdData.getManufacturer() + "\n" // Toshiba
+                        + "Installed OSs:\t" + ssdData.getInstalledOss() + "\n"
+                        + "Type:\t" + ssdData.getType() + "\n"
+                        + "Production date:\t" + ssdData.getDateOfProduction() + "\n"
+                        + "Description:\t" + ssdData.getDescription() + "\n"
         );
 
 
