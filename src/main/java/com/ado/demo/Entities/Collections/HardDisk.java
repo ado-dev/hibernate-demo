@@ -9,7 +9,7 @@ import java.util.Set;
  * DEMONSTRATES ADDING COLLECTIONS TO ENTITIES
  * Collections can be a list of value types, embeddable type, or entity collection,
  * this is the example of a list of value types. Collections will always be saved in
- * a new table with the id of its parent for reference.
+ * a new table with the id of its parent for reference and named parent_child by default.
  */
 
 @Entity
@@ -22,6 +22,7 @@ public class HardDisk {
     // Eager fetch loads all the variables
     // Lazy fetch type loads only the first level of variables
     @ElementCollection (fetch = FetchType.EAGER)
+    @JoinTable (name = "HD_OSs") // changes table name of the collection
     private Set<String> installedOss = new HashSet();
 
     public Set<String> getInstalledOss() {
