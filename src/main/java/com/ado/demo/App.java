@@ -6,6 +6,7 @@ import com.ado.demo.Entities.AssociationTypes.OneToMany_ManyToOne.Company;
 import com.ado.demo.Entities.AssociationTypes.OneToMany_ManyToOne.Employee;
 import com.ado.demo.Entities.AssociationTypes.OneToOne.Computer;
 import com.ado.demo.Entities.AssociationTypes.OneToOne.Motherboard;
+import com.ado.demo.Entities.Collections.HardDisk;
 import com.ado.demo.Entities.EmbeddableTypes.Phone;
 import com.ado.demo.Entities.Inheritance.JoinTable.Bike;
 import com.ado.demo.Entities.Inheritance.JoinTable.Car;
@@ -136,6 +137,14 @@ public class App {
         entityManager.persist(publicPc);
         entityManager.persist(familyPC);
         // ---------------------------------------------------
+
+        HardDisk ssd = new HardDisk();
+        ssd.getInstalledOss().add("Windows 10");
+        ssd.getInstalledOss().add("SomeLinuxDistro");
+        ssd.getInstalledOss().add("BSD");
+
+        entityManager.persist(ssd);
+        // ----------------------------------------------------
 
 
         entityManager.getTransaction().commit();
